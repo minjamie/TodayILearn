@@ -1,10 +1,12 @@
-# - 진행현황
+### 📆 2021-00-00() TIEP
+
+### - 진행현황
 
 > -
 
 ---
 
-## - TODAY I MET PROBLEM 🦠
+### - TODAY I MET PROBLEM 🦠
 
 >
 
@@ -14,7 +16,7 @@
 
 ```
 
-## - HOW TO FIX MY PROBLEM 💊
+### - HOW TO FIX MY PROBLEM 💊
 
 ---
 
