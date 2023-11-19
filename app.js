@@ -35,7 +35,7 @@ cron.schedule('33 1 * * *', () => {
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
 
-    const folderPath = `./${month}-${year}`;
+  const folderPath = `./${year}-${month}`;
 
   // 폴더가 존재하지 않으면 생성
   if (!fs.existsSync(folderPath)) {
@@ -48,7 +48,7 @@ cron.schedule('33 1 * * *', () => {
 const template = fs.readFileSync(templatePath, 'utf-8');
 
 const filledTemplate = template.replace(/{{year}}/g, year).replace(/{{month}}/g, month).replace(/{{day}}/g, day);
-  const updatedTemplate = filledTemplate.replace(/\[N\]/g, match => {
+  const updatedTemplate = filledTemplate.replace(/\[0\]/g, match => {
     const count = Number(match.slice(1, -1));
     return `[${count + 1}]`;
   });
