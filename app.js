@@ -3,8 +3,8 @@ const { execSync } = require('child_process');
 const cron = require('node-cron');
 
 const templatePath = './TIL양식.MD';
+cron.schedule('0 * * * *', () => {
 console.log('node app 실행')
-cron.schedule('15 6 * * *', () => {
   // 현재 날짜 구하기
   const date = new Date();
   const year = date.getFullYear();
