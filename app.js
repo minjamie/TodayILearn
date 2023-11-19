@@ -36,7 +36,20 @@ const filledTemplate = template.replace(/{{year}}/g, year).replace(/{{month}}/g,
 
   // Git 커밋 및 푸시
   execSync(`git add .`);
-  execSync(`git commit -m "Add TIL (${year}-${month}-${day})"`);
+  execSync(`git commit -m "Add TIL (${year}-${month}-${day}) 생성완료"`);
+  execSync('git push -u origin main');
+
+  console.log('TIL 자동화 스크립트가 실행됩니다.');
+});
+
+cron.schedule('59 23 * * *', () => {
+  console.log('금일 node app 실행');
+
+  // 나머지 코드 생략
+
+  // Git 커밋 및 푸시
+  execSync(`git add .`);
+  execSync(`git commit -m "Add TIL (${year}-${month}-${day}) 작성완료"`);
   execSync('git push -u origin main');
 
   console.log('TIL 자동화 스크립트가 실행됩니다.');
