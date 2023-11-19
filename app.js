@@ -3,7 +3,7 @@ const { execSync } = require('child_process');
 const cron = require('node-cron');
 
 const templatePath = './TIL양식.MD';
-
+console.log('node app 실행')
 cron.schedule('0 5 * * *', () => {
   // 현재 날짜 구하기
   const date = new Date();
