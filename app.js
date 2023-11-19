@@ -45,13 +45,19 @@ cron.schedule('33 1 * * *', () => {
   const fileName = `${year}${month}${day}.md`;
 
   // 템플릿 파일 읽어오기
-  const template = fs.readFileSync(templatePath, 'utf-8');
+const template = fs.readFileSync(templatePath, 'utf-8');
+
+const filledTemplate = template.replace(/{{year}}/g, year).replace(/{{month}}/g, month).replace(/{{day}}/g, day);
+  const updatedTemplate = filledTemplate.replace(/\[N\]/g, match => {
+    const count = Number(match.slice(1, -1));
+    return `[${count + 1}]`;
+  });
+
 
   // 템플릿에 날짜 삽입
-  const filledTemplate = template.replace(/{{year}}/g, year).replace(/{{month}}/g, month).replace(/{{day}}/g, day);
 
   // 파일 생성
-  fs.writeFileSync(`${folderPath}/${fileName}`, template);
+  fs.writeFileSync(`${folderPath}/${fileName}`, updatedTemplate);
 
   // Git 커밋 및 푸시
   execSync(`git add .`);
